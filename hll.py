@@ -50,7 +50,7 @@ class HyperLogLog(object):
     print hll.getEstimatedCardinality()
  
   if __name__ == "__main__":
-      from HyperLogLog import HyperLogLog
+      from hll import HyperLogLog
       import sys
       items = 100000
       if len(sys.argv) == 2:
