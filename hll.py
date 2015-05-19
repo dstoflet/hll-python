@@ -1,11 +1,18 @@
 import hashlib, math, string, random
 
-
+# HyperLogLog (http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf)
 
 class HyperLogLog(object):
-
   
   def __init__(self, registers=512):
+    """
+      registers
+        the number of buckets or substreams to split the hashed values into
+      The number of right most bits to index on is log(registers, 2) or 9 
+      when using 512 registers  
+      The Accuracy rate is 1.04/registers (or 99.8% with 512 registers)
+      
+    """
     self.registers = registers
     self.registry = [0 for i in range(registers)]
     self.key_len = int(math.log(registers, 2))
